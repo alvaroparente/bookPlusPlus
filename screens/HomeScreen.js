@@ -3,7 +3,10 @@ import React, { useEffect, useState } from 'react';
 import { View, FlatList, StyleSheet, ActivityIndicator, TouchableOpacity } from 'react-native';
 import LivroCard from '../components/LivroCard';
 import BookDetailsScreen from './BookDetailsScreen';
+import CheckoutScreen from '../screens/CheckoutScreen';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Header from '../components/Header';
+
 
 const Stack = createNativeStackNavigator();
 
@@ -36,12 +39,16 @@ function HomeMain({ navigation }) {
   if (carregando) {
     return (
       <View style={styles.centered}>
+        <Header titulo="Detalhes do Livro" />
         <ActivityIndicator size="large" color="#6200ee" />
       </View>
     );
   }
 
   return (
+  <View style={{ flex: 1 }}>
+    <Header titulo="Catálogo de Livros" />
+    
     <FlatList
       data={livros}
       keyExtractor={(item) => item.id}
@@ -53,7 +60,9 @@ function HomeMain({ navigation }) {
         </TouchableOpacity>
       )}
     />
-  );
+  </View>
+);
+
 }
 
 export default function HomeScreen() {
@@ -61,6 +70,7 @@ export default function HomeScreen() {
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="Catálogo" component={HomeMain} />
       <Stack.Screen name="Detalhes" component={BookDetailsScreen} />
+      <Stack.Screen name="Checkout" component={CheckoutScreen} />
     </Stack.Navigator>
   );
 }

@@ -1,11 +1,17 @@
 // screens/BookDetailsScreen.js
 import React, { useState, useEffect } from 'react';
-import { View, Text, Image, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
+import { View, Text, Image, StyleSheet, ScrollView, TouchableOpacity, Pressable } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useNavigation } from '@react-navigation/native';
+import Header from '../components/Header';
+
+
 
 export default function BookDetailsScreen({ route }) {
   const { livro } = route.params;
   const [favorito, setFavorito] = useState(false);
+  const navigation = useNavigation();
+
 
   useEffect(() => {
     verificarFavorito();
@@ -32,7 +38,9 @@ export default function BookDetailsScreen({ route }) {
   };
 
   return (
+    
     <ScrollView contentContainerStyle={styles.container}>
+
       <Image source={{ uri: livro.imagem }} style={styles.imagem} />
       <Text style={styles.titulo}>{livro.titulo}</Text>
       <Text style={styles.autor}>Autor: {livro.autor}</Text>
@@ -46,6 +54,15 @@ export default function BookDetailsScreen({ route }) {
           {favorito ? 'Remover dos Favoritos' : 'Adicionar aos Favoritos'}
         </Text>
       </TouchableOpacity>
+      <Pressable
+  onPress={() => navigation.navigate('Checkout', { livro })}
+  style={({ pressed }) => [
+    styles.botaoComprar,
+    { backgroundColor: pressed ? '#3700b3' : '#6200ee' },
+  ]}
+>
+  <Text style={styles.textoBotao}>Comprar</Text>
+</Pressable>
     </ScrollView>
   );
 }
