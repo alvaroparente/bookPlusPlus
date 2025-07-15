@@ -1,23 +1,35 @@
+// components/Header.js
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, SafeAreaView } from 'react-native';
 
 export default function Header({ titulo }) {
   return (
-    <View style={styles.container}>
-      <Text style={styles.texto}>{titulo}</Text>
-    </View>
+    // SafeAreaView garante que o conteúdo não fique sob a barra de status
+    <SafeAreaView style={styles.safeArea}>
+      <View style={styles.container}>
+        <Text style={styles.texto}>{titulo}</Text>
+      </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
+  safeArea: {
+    backgroundColor: '#ffffff',
+  },
   container: {
-    padding: 15,
-    backgroundColor: '#6200ee',
+    paddingBottom: 15,
+    paddingHorizontal: 20,
+    paddingTop: 10, // Menor padding no topo, pois a SafeAreaView já ajuda
+    width: '100%',
+    backgroundColor: '#ffffff',
     alignItems: 'center',
+    borderBottomWidth: 1, // Borda sutil para separação
+    borderBottomColor: '#e8e8e8',
   },
   texto: {
-    fontSize: 18,
-    color: '#fff',
+    fontSize: 20,
     fontWeight: 'bold',
+    color: '#333333',
   },
 });

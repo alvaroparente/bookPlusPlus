@@ -1,59 +1,95 @@
+// components/SwipeableFavorito.js
 import React from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity, Animated } from 'react-native';
 import { Swipeable } from 'react-native-gesture-handler';
 import { Ionicons } from '@expo/vector-icons';
 
 export default function SwipeableFavorito({ livro, onRemove, onPress }) {
-  // Render do botão que aparece ao deslizar para esquerda
+  // A função que renderiza o botão de apagar ao deslizar
   const renderRightActions = (progress, dragX) => {
     const scale = dragX.interpolate({
       inputRange: [-100, 0],
       outputRange: [1, 0],
       extrapolate: 'clamp',
     });
+
     return (
-      <TouchableOpacity onPress={() => onRemove(livro.id)} style={styles.deleteButton}>
-        <Animated.View style={{ transform: [{ scale }] }}>
-          <Ionicons name="trash-outline" size={30} color="white" />
+      <TouchableOpacity onPress={() => onRemove(livro.id, livro.titulo)} style={styles.deleteButton}>
+        <Animated.View style={[styles.deleteButtonContent, { transform: [{ scale }] }]}>
+          <Ionicons name="trash-outline" size={28} color="white" />
         </Animated.View>
       </TouchableOpacity>
     );
   };
 
   return (
-    <Swipeable renderRightActions={renderRightActions}>
-      <TouchableOpacity style={styles.card} onPress={onPress}>
+    <Swipeable renderRightActions={renderRightActions} overshootRight={false}>
+      <TouchableOpacity style={styles.cardContainer} onPress={onPress} activeOpacity={0.7}>
         <Image source={{ uri: livro.imagem }} style={styles.imagem} />
-        <View style={styles.info}>
-          <Text style={styles.titulo}>{livro.titulo || 'Título indisponível'}</Text>
-          <Text style={styles.autor}>{livro.autor || 'Autor desconhecido'}</Text>
-          <Text style={styles.preco}>R$ {livro.preco || '0,00'}</Text>
+        <View style={styles.infoContainer}>
+          <Text style={styles.titulo} numberOfLines={2}>{livro.titulo}</Text>
+          <Text style={styles.autor}>{livro.autor}</Text>
+          <Text style={styles.preco}>R$ {livro.preco}</Text>
         </View>
+        <Ionicons name="chevron-forward" size={24} color="#c7c7cc" />
       </TouchableOpacity>
     </Swipeable>
   );
 }
 
 const styles = StyleSheet.create({
-  card: {
+  cardContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 15,
-    backgroundColor: '#f5f5f5',
-    padding: 10,
-    borderRadius: 8,
+    backgroundColor: '#fff',
+    padding: 15,
+    marginHorizontal: 15,
+    marginVertical: 8,
+    borderRadius: 12,
+    // Sombra suave
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 3,
   },
-  imagem: { width: 60, height: 90, borderRadius: 4 },
-  info: { marginLeft: 10, justifyContent: 'space-between', flex: 1 },
-  titulo: { fontSize: 16, fontWeight: 'bold' },
-  autor: { fontSize: 14, color: '#333' },
-  preco: { fontSize: 14, color: '#2a9d8f' },
+  imagem: {
+    width: 70,
+    height: 105,
+    borderRadius: 8,
+    marginRight: 15,
+  },
+  infoContainer: {
+    flex: 1,
+    justifyContent: 'center',
+  },
+  titulo: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: '#333',
+    marginBottom: 4,
+  },
+  autor: {
+    fontSize: 14,
+    color: '#666',
+    marginBottom: 8,
+  },
+  preco: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: '#007AFF', // Cor primária para destaque
+  },
   deleteButton: {
-    backgroundColor: '#c0392b',
+    backgroundColor: '#e74c3c', // Um vermelho moderno para exclusão
     justifyContent: 'center',
     alignItems: 'center',
-    width: 70,
-    borderRadius: 8,
-    marginVertical: 5,
+    width: 90,
+    marginVertical: 8,
+    marginRight: 15,
+    borderRadius: 12,
+  },
+  deleteButtonContent: {
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
