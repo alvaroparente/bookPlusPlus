@@ -3,7 +3,7 @@ import React from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
 
 export default function PedidoCard({ compra }) {
-  // Formata a data (ISO string) para o padrão brasileiro (dd/mm/aaaa)
+  
   const dataFormatada = new Date(compra.data).toLocaleDateString('pt-BR');
 
   return (
@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
   status: {
     fontSize: 13,
     fontWeight: 'bold',
-    color: '#27ae60', // Verde para status positivo
+    color: '#27ae60',
   },
   content: {
     flexDirection: 'row',

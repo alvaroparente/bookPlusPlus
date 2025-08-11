@@ -39,7 +39,7 @@ function HomeMain({ navigation }) {
       .finally(() => setCarregando(false));
   }, []);
 
-  // Tela de Carregamento
+
   if (carregando) {
     return (
       <View style={styles.centered}>
@@ -48,7 +48,7 @@ function HomeMain({ navigation }) {
     );
   }
 
-  // Tela de Erro
+  
   if (erro) {
       return (
         <View style={styles.centered}>
@@ -58,7 +58,7 @@ function HomeMain({ navigation }) {
       )
   }
 
-  // Tela Principal
+  
   return (
     <View style={styles.container}>
       <Header titulo="Catálogo de Livros" />
@@ -80,7 +80,7 @@ function HomeMain({ navigation }) {
   );
 }
 
-// O Stack Navigator permanece o mesmo
+
 export default function HomeScreen() {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
@@ -94,14 +94,14 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f7f5f2', // Fundo padrão do tema
+    backgroundColor: '#f7f5f2', 
   },
   lista: {
-    paddingHorizontal: 8, // Espaço nas laterais da lista
+    paddingHorizontal: 8, 
     paddingBottom: 20,
   },
   touchableCard: {
-      flex: 1/2, // Garante que o toque ocupe o mesmo espaço do card
+      flex: 1/2, 
   },
   centered: {
     flex: 1,

@@ -5,7 +5,7 @@ import { Swipeable } from 'react-native-gesture-handler';
 import { Ionicons } from '@expo/vector-icons';
 
 export default function SwipeableFavorito({ livro, onRemove, onPress }) {
-  // A função que renderiza o botão de apagar ao deslizar
+  
   const renderRightActions = (progress, dragX) => {
     const scale = dragX.interpolate({
       inputRange: [-100, 0],
@@ -77,10 +77,10 @@ const styles = StyleSheet.create({
   preco: {
     fontSize: 16,
     fontWeight: 'bold',
-    color: '#007AFF', // Cor primária para destaque
+    color: '#007AFF', 
   },
   deleteButton: {
-    backgroundColor: '#e74c3c', // Um vermelho moderno para exclusão
+    backgroundColor: '#e74c3c', 
     justifyContent: 'center',
     alignItems: 'center',
     width: 90,

@@ -3,7 +3,7 @@ import React from 'react';
 import { View, Text, Image, StyleSheet } from 'react-native';
 
 export default function LivroCard({ titulo, autor, preco, imagem }) {
-  // Limita o tamanho do título para não quebrar o layout
+  
   const tituloFormatado = titulo.length > 35 ? `${titulo.substring(0, 32)}...` : titulo;
 
   return (
@@ -20,12 +20,12 @@ export default function LivroCard({ titulo, autor, preco, imagem }) {
 
 const styles = StyleSheet.create({
   card: {
-    flex: 1, // Permite que o card se expanda na coluna
+    flex: 1, 
     margin: 8,
     backgroundColor: '#fff',
-    borderRadius: 12, // Bordas mais arredondadas
-    overflow: 'hidden', // Garante que a imagem com borda arredondada não vaze
-    // Sombra mais suave
+    borderRadius: 12, 
+    overflow: 'hidden',
+    
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
   },
   imagem: {
     width: '100%',
-    height: 180, // Imagem um pouco maior
+    height: 180, 
     resizeMode: 'cover',
   },
   infoContainer: {
@@ -57,6 +57,6 @@ const styles = StyleSheet.create({
   preco: {
     fontSize: 16,
     fontWeight: 'bold',
-    color: '#007AFF', // Usando a cor primária para destaque
+    color: '#007AFF', 
   },
 });

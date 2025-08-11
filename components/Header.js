@@ -20,11 +20,11 @@ const styles = StyleSheet.create({
   container: {
     paddingBottom: 15,
     paddingHorizontal: 20,
-    paddingTop: 10, // Menor padding no topo, pois a SafeAreaView já ajuda
+    paddingTop: 10, 
     width: '100%',
     backgroundColor: '#ffffff',
     alignItems: 'center',
-    borderBottomWidth: 1, // Borda sutil para separação
+    borderBottomWidth: 1, 
     borderBottomColor: '#e8e8e8',
   },
   texto: {

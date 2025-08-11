@@ -5,14 +5,14 @@ import {
 } from 'react-native';
 import * as Location from 'expo-location';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import HeaderComVoltar from '../components/HeaderComVoltar'; // Importe o header
+import HeaderComVoltar from '../components/HeaderComVoltar';
 
 export default function CheckoutScreen({ route, navigation }) {
   const { livro } = route.params;
   const [endereco, setEndereco] = useState('Não foi possível obter o endereço.');
   const [carregando, setCarregando] = useState(true);
 
-  // Lógica para obter endereço permanece a mesma
+ 
   useEffect(() => {
     const obterEndereco = async () => {
       try {
@@ -38,7 +38,7 @@ export default function CheckoutScreen({ route, navigation }) {
     obterEndereco();
   }, []);
 
-  // Lógica de confirmação de compra permanece a mesma
+  
   const confirmarCompra = async () => {
     const novaCompra = { ...livro, endereco, data: new Date().toISOString() };
     const comprasExistentes = await AsyncStorage.getItem('compras');
@@ -47,12 +47,12 @@ export default function CheckoutScreen({ route, navigation }) {
     await AsyncStorage.setItem('compras', JSON.stringify(lista));
 
     Alert.alert('Compra Confirmada!', 'Seu pedido foi realizado com sucesso. Você será redirecionado.');
-    // Idealmente, limpe o carrinho aqui se houver um
-    navigation.popToTop(); // Volta para o início da pilha (Catálogo)
-    navigation.navigate('Meus Pedidos'); // Abre a tela de pedidos
+    
+    navigation.popToTop(); 
+    navigation.navigate('Meus Pedidos'); 
   };
 
-  // Nova tela de carregamento
+  
   if (carregando) {
     return (
       <View style={styles.loadingContainer}>
@@ -62,7 +62,7 @@ export default function CheckoutScreen({ route, navigation }) {
     );
   }
 
-  // Tela principal redesenhada
+
   return (
     <View style={styles.container}>
       <HeaderComVoltar titulo="Finalizar Pedido" />

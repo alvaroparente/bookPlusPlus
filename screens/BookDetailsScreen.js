@@ -2,7 +2,7 @@
 import React, {useState, useEffect } from 'react';
 import { View, Text, Image, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import HeaderComVoltar from '../components/HeaderComVoltar'; // Importe o novo header
+import HeaderComVoltar from '../components/HeaderComVoltar'; 
 
 export default function BookDetailsScreen({ route, navigation }) {
   const { livro } = route.params;
@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
   },
   scrollContent: {
     padding: 20,
-    paddingBottom: 120, // Espaço extra para não ser coberto pelo footer
+    paddingBottom: 120, 
   },
   imageContainer: {
     alignItems: 'center',
@@ -131,7 +131,7 @@ const styles = StyleSheet.create({
   descricao: {
     fontSize: 16,
     color: '#555',
-    lineHeight: 24, // Melhora a legibilidade
+    lineHeight: 24, 
   },
   footer: {
     position: 'absolute',
@@ -140,14 +140,14 @@ const styles = StyleSheet.create({
     right: 0,
     flexDirection: 'row',
     padding: 20,
-    paddingBottom: 30, // Espaço para a barra de gestos do celular
+    paddingBottom: 30, 
     backgroundColor: '#ffffff',
     borderTopWidth: 1,
     borderTopColor: '#e8e8e8',
     justifyContent: 'space-between',
     alignItems: 'center',
   },
-  // Botão secundário (outline)
+  
   botaoFavorito: {
     paddingVertical: 12,
     paddingHorizontal: 20,
@@ -160,7 +160,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '600',
   },
-  // Botão primário (preenchido)
+  
   botaoComprar: {
     backgroundColor: '#007AFF',
     paddingVertical: 12,

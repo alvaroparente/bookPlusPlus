@@ -1,8 +1,7 @@
 // components/HeaderComVoltar.js (NOVO ARQUIVO SUGERIDO)
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, SafeAreaView } from 'react-native';
-// Para o ícone, o ideal seria usar uma biblioteca como react-native-vector-icons,
-// mas um emoji ou texto simples funciona para começar.
+
 import { useNavigation } from '@react-navigation/native';
 
 export default function HeaderComVoltar({ titulo }) {
@@ -51,6 +50,6 @@ const styles = StyleSheet.create({
     fontWeight: '500',
   },
   placeholder: {
-    width: 70, // Tamanho aproximado do botão para manter o título centralizado
+    width: 70,
   },
 });

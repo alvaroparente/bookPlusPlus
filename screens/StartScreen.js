@@ -26,11 +26,11 @@ export default function StartScreen({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f7f5f2', // Um branco "quente", mais suave
-    justifyContent: 'space-between', // Empurra o conteúdo e o botão para as extremidades
+    backgroundColor: '#f7f5f2', 
+    justifyContent: 'space-between', 
     alignItems: 'center',
     padding: 50,
-    paddingBottom: 50, // Mais espaço na parte inferior
+    paddingBottom: 50, 
   },
   content: {
     flex: 1,
@@ -52,15 +52,15 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: '#555',
     textAlign: 'center',
-    maxWidth: '80%', // Evita que o texto fique muito largo em telas grandes
+    maxWidth: '80%', 
   },
   button: {
-    backgroundColor: '#007AFF', // Um azul vibrante e moderno
+    backgroundColor: '#007AFF', 
     paddingVertical: 15,
-    borderRadius: 30, // Bordas bem arredondadas
+    borderRadius: 30, 
     width: '100%',
     alignItems: 'center',
-    // Sombra para dar profundidade
+    
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
-    elevation: 5, // Elevação para Android
+    elevation: 5, 
   },
   buttonText: {
     color: '#fff',

@@ -4,7 +4,7 @@ import { View, Text, FlatList, StyleSheet, Alert, ActivityIndicator } from 'reac
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useFocusEffect, useNavigation } from '@react-navigation/native';
 import SwipeableFavorito from '../components/SwipeableFavorito';
-import Header from '../components/Header'; // Importando o Header padrão
+import Header from '../components/Header'; 
 
 export default function FavoritesScreen() {
   const [favoritos, setFavoritos] = useState([]);
@@ -29,7 +29,7 @@ export default function FavoritesScreen() {
     await AsyncStorage.setItem('favoritos', JSON.stringify(novaLista));
   };
 
-  // Centralizando a lógica do Alert aqui
+  
   const confirmarRemocao = (id, titulo) =>
     Alert.alert(
       'Remover Favorito',
@@ -44,8 +44,7 @@ export default function FavoritesScreen() {
     <SwipeableFavorito
       livro={item}
       onRemove={confirmarRemocao}
-      // O nome da rota 'BookDetails' foi mantido como no seu código original.
-      // Se a rota for 'Detalhes', ajuste aqui.
+      
       onPress={() => navigation.navigate('Detalhes', { livro: item })}
     />
   );

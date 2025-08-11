@@ -7,7 +7,7 @@ export const FavoritesProvider = ({ children }) => {
 
   const addToFavorites = (book) => {
     setFavorites((prev) => {
-      // Evita duplicatas
+     
       if (prev.some((item) => item.id === book.id)) return prev;
       return [...prev, book];
     });
